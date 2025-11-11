@@ -1,0 +1,129 @@
+
+.scroll-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 60px;
+  background-color: transparent;
+  color: white;
+  box-sizing: border-box;
+}
+
+
+.scroll-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: left;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.scroll-info {
+  background: #1e1e1e;
+  border-radius: 20px;
+  padding: 30px 40px;
+  margin-bottom: 50px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+  width: 100%;
+}
+
+.scroll-info h2 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.scroll-info p {
+  color: #ccc;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.scroll-info code {
+  background: #2a2a2a;
+  padding: 3px 6px;
+  border-radius: 5px;
+  font-family: "Fira Code", monospace;
+  color: #7fffd4;
+}
+
+.scroll-info ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 25px;
+}
+
+.scroll-info li {
+  color: #ddd;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+
+.scroll-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.scroll-buttons button {
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.scroll-buttons button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+
+.scroll-section {
+  background: #1e1e1e;
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 60px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 100%;
+}
+
+.scroll-section h3 {
+  font-size: 1.5rem;
+  color: #00ffff;
+  margin-bottom: 15px;
+}
+
+.scroll-section p {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+
+.section1 {
+  border-left: 6px solid #00ffff;
+}
+
+.section2 {
+  border-left: 6px solid #ff7b00;
+}
+
+.section3 {
+  border-left: 6px solid #9b5de5;
+}
+
+
+@media (max-width: 900px) {
+  .scroll-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .scroll-buttons button {
+    width: 100%;
+  }
+}

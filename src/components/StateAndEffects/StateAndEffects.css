@@ -1,0 +1,165 @@
+
+.statefx-container {
+  padding: 40px;
+  color: white;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.statefx-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+
+.info-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+.info-card h2 {
+  color: #00c6ff;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.info-card p {
+  color: #ddd;
+  line-height: 1.5;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+
+.concept-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.concept {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #00c6ff;
+}
+
+.concept h4 {
+  color: #00c6ff;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+
+.concept p {
+  margin: 0;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.tip {
+  margin-top: 20px;
+  background: rgba(0, 255, 170, 0.1);
+  border-left: 4px solid #00ffaa;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-style: italic;
+}
+
+
+.demo-card {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.demo-card:hover {
+  transform: translateY(-5px);
+}
+
+.demo-card h2 {
+  font-size: 1.5rem;
+  color: #00ffaa;
+  margin-bottom: 25px;
+}
+
+.demo-box {
+  background-color: black;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.demo-text {
+  color: #aaa;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.demo-box h1 {
+  font-size: 2.5rem;
+  color: #00ffaa;
+}
+.statefx-container {
+  min-height: calc(100vh - 100px); 
+  padding-bottom: 60px;          
+}
+
+.mini-code {
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-top: 10px;
+  overflow-x: auto;
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  color: #dcdcdc;
+  border-left: 3px solid #00c6ff;
+  white-space: pre-wrap;
+  box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.1);
+}
+
+.mini-code code {
+  color: #a8ffef;
+}
+
+
+.mini-code .keyword {
+  color: #569cd6;
+}
+
+.mini-code .function {
+  color: #dcdcaa;
+}
