@@ -26,34 +26,53 @@ export default function StateAndEffects() {
       <h1 className="title">useState & useEffect in Action ⚡</h1>
 
       <div className="statefx-grid">
-        {/* === LEFT SIDE: Explanation === */}
+       
         <div className="info-card">
           <h2>Understanding State & Effects</h2>
           <p>
-            React’s <code>useState</code> and <code>useEffect</code> let components
-            respond to changes like window resizing, API calls, or user actions.
+            React’s <code>useState</code> and <code>useEffect</code> hooks let components
+            respond to dynamic changes like window resizing, API calls, or user actions.
           </p>
 
-          <div className="concept">
-            <h4>🧠 useState</h4>
-            <p>
-              Stores and updates values — like the <b>window width</b> that updates
-              when you resize your browser.
-            </p>
-          </div>
+          <div className="concept-list">
+            <div className="concept">
+              <h4>🧠 useState</h4>
+              <p>
+                Manages dynamic values — like the <b>window width</b> that updates
+                as you resize the screen.
+              </p>
+              <pre className="mini-code">
+                <code>{`const [windowWidth, setWindowWidth] = useState(window.innerWidth)`}</code>
+              </pre>
+            </div>
 
-          <div className="concept">
-            <h4>⚙️ useEffect</h4>
-            <p>
-              Handles side effects — like adding and removing event listeners.
-            </p>
-          </div>
+            <div className="concept">
+              <h4>⚙️ useEffect</h4>
+              <p>
+                Handles side effects — like adding and removing <b>event listeners</b>.
+              </p>
+              <pre className="mini-code">
+                <code>{`useEffect(() => {
+  function handleResize() {
+    setWindowWidth(window.innerWidth);
+  }
+  window.addEventListener("resize", handleResize);
+}, []);`}</code>
+              </pre>
+            </div>
 
-          <div className="concept">
-            <h4>🧹 Cleanup Function</h4>
-            <p>
-              Cleans up when effects are no longer needed, preventing memory leaks.
-            </p>
+            <div className="concept">
+              <h4>🧹 Cleanup Function</h4>
+              <p>
+                Ensures old effects are removed when the component unmounts,
+                preventing memory leaks or duplicate listeners.
+              </p>
+              <pre className="mini-code">
+                <code>{`return () => {
+  window.removeEventListener("resize", handleResize);
+}`}</code>
+              </pre>
+            </div>
           </div>
 
           <div className="tip">
@@ -61,9 +80,9 @@ export default function StateAndEffects() {
           </div>
         </div>
 
-      
+       
         <div className="demo-card">
-         
+      
           <button
             className="toggle-simple"
             onClick={() => setShowTracker((prev) => !prev)}
@@ -71,7 +90,6 @@ export default function StateAndEffects() {
             Toggle Window Tracker
           </button>
 
-          
           <h2>Live Example</h2>
           <div className="demo-box">
             {showTracker ? (
@@ -80,7 +98,7 @@ export default function StateAndEffects() {
                 <h1>{windowWidth}px</h1>
               </>
             ) : (
-              <p className="demo-text">Tracking paused ⏸️</p>
+              <p className="demo-text">Tracking paused</p>
             )}
           </div>
         </div>
