@@ -3,92 +3,85 @@ import "./StateAndEffects.css";
 
 export default function StateAndEffects() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [showTracker, setShowTracker] = useState(true);
 
   useEffect(() => {
+    if (!showTracker) return;
+
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }
 
     window.addEventListener("resize", handleResize);
-    console.log("✅ Event listener added");
+    console.log("✅ Tracking window width...");
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      console.log("🧹 Cleanup: listener removed");
+      console.log("🧹 Tracker stopped.");
     };
-  }, []);
+  }, [showTracker]);
 
   return (
     <div className="statefx-container">
       <h1 className="title">useState & useEffect in Action ⚡</h1>
 
       <div className="statefx-grid">
-       
+        {/* === LEFT SIDE: Explanation === */}
         <div className="info-card">
           <h2>Understanding State & Effects</h2>
           <p>
-            React’s <code>useState</code> and <code>useEffect</code> hooks allow
-            components to respond to user actions, time, and system events.
+            React’s <code>useState</code> and <code>useEffect</code> let components
+            respond to changes like window resizing, API calls, or user actions.
           </p>
 
-          <div className="concept-list">
+          <div className="concept">
+            <h4>🧠 useState</h4>
+            <p>
+              Stores and updates values — like the <b>window width</b> that updates
+              when you resize your browser.
+            </p>
+          </div>
 
-           
-            <div className="concept">
-              <h4>🧠 useState</h4>
-              <p>
-                Manages dynamic values — like the <b>window width</b> that
-                updates when you resize your screen.
-              </p>
-              <pre className="mini-code">
-                <code>{`const [windowWidth, setWindowWidth] = React.useState(window.innerWidth)`}</code>
-              </pre>
-            </div>
+          <div className="concept">
+            <h4>⚙️ useEffect</h4>
+            <p>
+              Handles side effects — like adding and removing event listeners.
+            </p>
+          </div>
 
-            
-            <div className="concept">
-              <h4>⚙️ useEffect</h4>
-              <p>
-                Handles side effects — like <b>event listeners</b>, data
-                fetching, or timers.
-              </p>
-              <pre className="mini-code">
-                <code>{`React.useEffect(() => {
-  function handleResize() {
-    setWindowWidth(window.innerWidth)
-  }
-
-  window.addEventListener("resize", handleResize)
-}, [])`}</code>
-              </pre>
-            </div>
-
-            
-            <div className="concept">
-              <h4>🧹 Cleanup Function</h4>
-              <p>
-                Ensures that old effects (like event listeners) are properly
-                removed when the component unmounts.
-              </p>
-              <pre className="mini-code">
-                <code>{`return () => {
-  window.removeEventListener("resize", handleResize)
-}`}</code>
-              </pre>
-            </div>
+          <div className="concept">
+            <h4>🧹 Cleanup Function</h4>
+            <p>
+              Cleans up when effects are no longer needed, preventing memory leaks.
+            </p>
           </div>
 
           <div className="tip">
-            💡 Try resizing your browser window to see the live example update!
+            💡 Try toggling the tracker and resizing your browser window below!
           </div>
         </div>
 
-        
+      
         <div className="demo-card">
+         
+          <button
+            className="toggle-simple"
+            onClick={() => setShowTracker((prev) => !prev)}
+          >
+            Toggle Window Tracker
+          </button>
+
+          
           <h2>Live Example</h2>
           <div className="demo-box">
-            <p className="demo-text">Window width:</p>
-            <h1>{windowWidth}px</h1>
+            {showTracker ? (
+              <>
+                <p className="demo-text">Window width:</p>
+                <h1>{windowWidth}px</h1>
+              </>
+            ) : (
+              <p className="demo-text">Tracking paused ⏸️</p>
+            )}
           </div>
         </div>
       </div>
