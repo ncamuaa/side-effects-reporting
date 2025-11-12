@@ -1,10 +1,12 @@
+/* === PAGE BASE === */
 .meme-page {
   padding: 40px 60px;
   color: white;
   animation: fadeIn 0.6s ease-in-out;
-  background-color: transparent;
   width: 100%;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  background: transparent;
 }
 
 @keyframes fadeIn {
@@ -18,7 +20,7 @@
   }
 }
 
-
+/* === TITLE === */
 .meme-title {
   text-align: left;
   font-size: 2rem;
@@ -28,47 +30,81 @@
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-
+/* === EXPLANATION SECTION === */
 .meme-info {
-  background: #1e1e1e;
+  background: rgba(30, 30, 30, 0.95);
   border-radius: 20px;
   padding: 30px 40px;
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
   width: 100%;
   margin-bottom: 40px;
+  box-sizing: border-box;
 }
 
+/* Heading inside info */
 .meme-info h2 {
   color: white;
-  font-size: 1.4rem;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
 }
 
+/* Explanation text */
 .meme-info p {
   color: #cccccc;
   line-height: 1.6;
   margin-bottom: 15px;
 }
 
-.meme-info code {
-  background: #2a2a2a;
-  padding: 2px 6px;
-  border-radius: 5px;
+/* === INDIVIDUAL CONCEPT BOX === */
+.concept {
+  background: rgba(0, 0, 0, 0.6);
+  border-left: 4px solid #00c6ff;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 25px 0;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.08);
+}
+
+.concept:hover {
+  transform: translateY(-5px);
+}
+
+.concept h4 {
+  color: #00c6ff;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.concept p {
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* === MINI CODE BLOCK === */
+.mini-code {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 12px;
+  overflow-x: auto;
   font-family: "Fira Code", monospace;
-}
-
-.meme-info ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.meme-info li {
-  margin-bottom: 8px;
   font-size: 0.95rem;
-  color: #dddddd;
+  color: #a8ffef;
+  box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.1);
+  border-left: 4px solid #00c6ff;
+  transition: 0.3s;
 }
 
+.mini-code:hover {
+  box-shadow: inset 0 0 15px rgba(0, 255, 255, 0.3);
+}
 
+/* === Random Meme Generator Section === */
 .meme-container {
   display: flex;
   flex-direction: column;
@@ -76,7 +112,6 @@
   width: 100%;
   box-sizing: border-box;
 }
-
 
 .form {
   display: flex;
@@ -119,8 +154,8 @@ input:focus {
 }
 
 button {
-  background-color: #111;
-  color: white;
+  background-color: #00ffaa;
+  color: black;
   font-weight: bold;
   border: none;
   border-radius: 30px;
@@ -131,10 +166,10 @@ button {
 
 button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 15px rgba(0, 255, 170, 0.5);
 }
 
-
+/* === Meme Display === */
 .meme {
   position: relative;
   text-align: center;
@@ -173,7 +208,7 @@ button:hover {
   bottom: 20px;
 }
 
-
+/* === Responsive Adjustments === */
 @media (max-width: 900px) {
   .form {
     flex-direction: column;
@@ -189,5 +224,9 @@ button:hover {
   button {
     width: 100%;
     max-width: 250px;
+  }
+
+  .concept {
+    padding: 15px;
   }
 }

@@ -43,55 +43,58 @@ export default function Refs() {
 
   return (
     <div className="refs-page">
-    
-      <div className="refs-header">
-        <h1 className="refs-title">useRef() in Action 🍳</h1>
+      <h1 className="refs-title">useRef() in Action 🍳</h1>
 
-        <div className="refs-explanation">
-        
-          <div className="refs-concepts">
-            <h2>Understanding Refs & Side Effects</h2>
-            <p>
-              The <code>useRef()</code> hook lets you access and manipulate DOM
-              elements directly — without re-rendering your component. Here’s
-              what’s happening in this demo:
-            </p>
+      <div className="refs-info">
+        <h2>Understanding Refs & Side Effects</h2>
+        <p>
+          The <code>useRef()</code> hook gives us a way to reference and
+          interact with DOM elements directly without triggering re-renders. In
+          this demo, it’s used to smoothly scroll to the generated recipe.
+        </p>
 
-            <div className="concept-list">
-              <div className="concept-box">
-                <h4>🧠 useState</h4>
-                <p>Manages the ingredient list and recipe text.</p>
-              </div>
+        {/* 🧠 useState */}
+        <div className="concept">
+          <h4>🧠 useState</h4>
+          <p>Manages the list of ingredients and the recipe text.</p>
+          <pre className="mini-code">
+            <code>{`const [ingredients, setIngredients] = useState([
+  "chicken",
+  "all the main spices",
+  "corn",
+  "heavy cream",
+  "pasta"
+]);
 
-              <div className="concept-box">
-                <h4>⚙️ useRef</h4>
-                <p>Stores a reference to the recipe section DOM element.</p>
-              </div>
+const [recipe, setRecipe] = useState("");`}</code>
+          </pre>
+        </div>
 
-              <div className="concept-box">
-                <h4>📜 scrollIntoView()</h4>
-                <p>
-                  Smoothly scrolls to the recipe section after generating the
-                  recipe.
-                </p>
-              </div>
-            </div>
-          </div>
+        {/* ⚙️ useRef */}
+        <div className="concept">
+          <h4>⚙️ useRef</h4>
+          <p>Creates a reference to the recipe section for direct DOM access.</p>
+          <pre className="mini-code">
+            <code>{`const recipeSection = useRef(null);`}</code>
+          </pre>
+        </div>
 
-         
-          <div className="refs-flow">
-            <h3>How it works 🔁</h3>
-            <ol>
-              <li>👩‍🍳 Add ingredients using <code>useState()</code></li>
-              <li>🎯 Click “Generate Recipe”</li>
-              <li>🧾 AI creates a new recipe dynamically</li>
-              <li>🪄 <code>scrollIntoView()</code> moves to the recipe area</li>
-            </ol>
-          </div>
+        {/* 📜 scrollIntoView */}
+        <div className="concept">
+          <h4>📜 scrollIntoView()</h4>
+          <p>
+            Scrolls smoothly to the recipe section when a new recipe is
+            generated.
+          </p>
+          <pre className="mini-code">
+            <code>{`recipeSection.current?.scrollIntoView({
+  behavior: "smooth"
+});`}</code>
+          </pre>
         </div>
       </div>
 
-      
+      {/* FORM SECTION */}
       <form onSubmit={addIngredient} className="add-ingredient-form">
         <input
           type="text"
@@ -102,9 +105,8 @@ export default function Refs() {
         <button type="submit">Add Ingredient ➕</button>
       </form>
 
-     
+      {/* MAIN LAYOUT */}
       <div className="recipe-layout">
-       
         <div className="ingredient-list">
           <h3>🧂 Current Ingredients</h3>
           <ul>
@@ -117,7 +119,6 @@ export default function Refs() {
           </button>
         </div>
 
-       
         {recipe && (
           <div ref={recipeSection} className="recipe-section">
             <h3>👨‍🍳 Chef Claude’s Recipe</h3>
@@ -128,4 +129,3 @@ export default function Refs() {
     </div>
   );
 }
-

@@ -36,28 +36,67 @@ export default function RandomMeme() {
     <div className="meme-page">
       <h1 className="meme-title">Random Meme Generator 😆</h1>
 
-  
       <div className="meme-info">
-        <h2>What’s happening here?</h2>
+        <h2>Understanding Hooks in This Component 🧩</h2>
         <p>
-          This meme generator uses <code>useState</code> to manage meme data and{" "}
-          <code>useEffect</code> to fetch meme templates from an API only once
-          when the component loads.
+          This meme generator demonstrates how <code>useState</code> and{" "}
+          <code>useEffect</code> work together with randomization logic to fetch
+          and render memes dynamically.
         </p>
-        <ul>
-          <li>
-            🧠 <strong>useState:</strong> Tracks meme text and image
-          </li>
-          <li>
-            ⚙️ <strong>useEffect:</strong> Fetches memes from the API
-          </li>
-          <li>
-            🎲 <strong>Randomization:</strong> Picks a random meme image on click
-          </li>
-        </ul>
+
+   
+        <div className="concept">
+          <h4>🧠 useState</h4>
+          <p>
+            Tracks meme text (top and bottom captions) and current image being
+            displayed.
+          </p>
+          <pre className="mini-code">
+            <code>{`const [meme, setMeme] = useState({
+  topText: "One does not simply",
+  bottomText: "Walk into Mordor",
+  imageUrl: "http://i.imgflip.com/1bij.jpg",
+});`}</code>
+          </pre>
+        </div>
+
+       
+        <div className="concept">
+          <h4>⚙️ useEffect</h4>
+          <p>
+            Fetches meme templates from the <b>ImgFlip API</b> once when the
+            component first loads.
+          </p>
+          <pre className="mini-code">
+            <code>{`useEffect(() => {
+  fetch("https://api.imgflip.com/get_memes")
+    .then(res => res.json())
+    .then(data => setAllMemes(data.data.memes));
+}, []);`}</code>
+          </pre>
+        </div>
+
+        
+        <div className="concept">
+          <h4>🎲 Randomization</h4>
+          <p>
+            Picks a random meme from the fetched list each time you click the
+            button.
+          </p>
+          <pre className="mini-code">
+            <code>{`function getMemeImage() {
+  const randomNumber = Math.floor(Math.random() * allMemes.length);
+  const newMemeUrl = allMemes[randomNumber].url;
+  setMeme(prev => ({
+    ...prev,
+    imageUrl: newMemeUrl
+  }));
+}`}</code>
+          </pre>
+        </div>
       </div>
 
-      
+     
       <div className="meme-container">
         <div className="form">
           <div className="input-group">
@@ -94,3 +133,4 @@ export default function RandomMeme() {
     </div>
   );
 }
+
